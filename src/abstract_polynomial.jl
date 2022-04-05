@@ -354,6 +354,9 @@ function removeleadingterm(p::AbstractPolynomialLike)
     # Iterators.drop returns an Interators.Drop which is not an AbstractVector
     polynomial(terms(p)[2:end], SortedUniqState())
 end
+function MA.promote_operation(::typeof(removeleadingterm), ::Type{PT}) where {PT<:AbstractPolynomial}
+    return PT
+end
 
 #$(SIGNATURES)
 """
